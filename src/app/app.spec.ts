@@ -33,4 +33,22 @@ describe('App', () => {
     expect(link.href).toContain('https://store.tilstack.me/prd_qpqx6nho');
     expect(link.textContent).toContain('Me soutenir');
   });
+
+  it('anime les zones clés : entrée en cascade et transitions au survol (sauf si « réduire les animations »)', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    document.body.appendChild(fixture.nativeElement);
+    const el: HTMLElement = fixture.nativeElement;
+    const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const survol = ['.product', '.app', '.support', '.tile__icon', '.socials', '.socials a', '.btn--primary', '.btn--whatsapp', '.chip', '.product__mascot'];
+    for (const sel of survol) {
+      const duree = getComputedStyle(el.querySelector(sel)!).transitionDuration;
+      if (reduit) expect(parseFloat(duree)).withContext(sel).toBe(0);
+      else expect(parseFloat(duree)).withContext(sel).toBeGreaterThan(0);
+    }
+    for (const sel of ['app-product-card', 'app-whatsapp-cta', 'app-apps-list', 'app-quick-links', 'app-socials']) {
+      const nom = getComputedStyle(el.querySelector(sel)!).animationName;
+      expect(nom).withContext(sel).toBe(reduit ? 'none' : 'rise');
+    }
+  });
 });

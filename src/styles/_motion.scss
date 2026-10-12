@@ -1,0 +1,184 @@
+// Mouvement de la page, limité aux zones stratégiques : carte produit, boutons, applications, liens, réseaux, en-tête.
+// Les textes, l'horloge et le profil restent fixes.
+// Mouvement de la page. Tout est désactivé si l'utilisateur réduit les animations (prefers-reduced-motion).
+// Seuls transform, translate, opacity et box-shadow bougent : la mise en page ne change jamais (pas de défilement ajouté).
+// Les effets de survol ne s'appliquent qu'aux appareils qui ont un pointeur (pas de « survol collé » sur téléphone).
+
+@media (prefers-reduced-motion: no-preference) {
+  // --- Transitions communes à tous les éléments interactifs ou décoratifs
+  .product,
+  .app,
+  .socials,
+  .tile__icon,
+  .btn,
+  .support,
+  .chip,
+  .seg button,
+  .brand img,
+  .product__mascot,
+  .app img,
+  .app__ph,
+  .socials a,
+  .ico {
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 0.35s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      color 0.2s ease;
+  }
+  .product__mascot {
+    transform-origin: 50% 90%;
+  }
+
+  // --- Entrée en cascade au chargement
+  app-product-card,
+  app-whatsapp-cta,
+  app-apps-list,
+  app-quick-links,
+  app-socials {
+    animation: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0s);
+  }
+  app-product-card {
+    --delay: 0.18s;
+  }
+  app-whatsapp-cta {
+    --delay: 0.26s;
+  }
+  app-apps-list {
+    --delay: 0.32s;
+  }
+  app-quick-links {
+    --delay: 0.4s;
+  }
+  app-socials {
+    --delay: 0.46s;
+  }
+
+  // --- Mouvements permanents, discrets
+  .product__mascot {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  // --- Appui sur un bouton
+  .btn:active,
+  .support:active,
+  .chip:active,
+  .socials a:active,
+  .tile:active .tile__icon {
+    transform: scale(0.96);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes float {
+    50% {
+      translate: 0 -0.4rem;
+    }
+  }
+  @keyframes beat {
+    0%,
+    60%,
+    100% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.3);
+    }
+  }
+  @keyframes wiggle {
+    25% {
+      transform: rotate(-14deg);
+    }
+    75% {
+      transform: rotate(14deg);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  // --- Carte produit : se soulève, s'illumine, la mascotte saute, le prix grossit
+  .product:hover {
+    transform: translateY(-0.35rem);
+    border-color: #ffe98a;
+    box-shadow:
+      0 1.4rem 3rem rgba(255, 222, 89, 0.22),
+      0 0.6rem 1.8rem rgba(0, 0, 0, 0.3);
+  }
+  .product:hover .product__mascot {
+    transform: translateY(-0.5rem) rotate(-3deg) scale(1.05);
+  }
+
+  // --- Applications
+  .app:hover {
+    transform: translateY(-0.2rem);
+    border-color: rgba(255, 222, 89, 0.7);
+    box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.18);
+  }
+  .app:hover img,
+  .app:hover .app__ph {
+    transform: scale(1.12) rotate(-5deg);
+  }
+  .support:hover {
+    transform: translateY(-0.1rem) scale(1.04);
+    box-shadow: 0 0.5rem 1.2rem rgba(255, 222, 89, 0.4);
+  }
+  .support:hover .ico {
+    animation: beat 0.9s ease-in-out infinite;
+  }
+
+  // --- Boutons
+  a.btn:hover {
+    transform: translateY(-0.15rem);
+  }
+  .btn--primary:hover {
+    box-shadow: 0 0.7rem 1.7rem rgba(255, 222, 89, 0.5);
+    transform: translateY(-0.15rem) scale(1.03);
+  }
+  .btn--primary:hover .ico,
+  .btn--whatsapp:hover .ico {
+    animation: wiggle 0.6s ease-in-out;
+  }
+  .btn--whatsapp:hover {
+    box-shadow: 0 0.8rem 1.8rem rgba(11, 122, 107, 0.45);
+  }
+
+  // --- Liens en colonne
+  .tile:hover .tile__icon {
+    transform: translateY(-0.3rem) rotate(-6deg) scale(1.08);
+    box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.25);
+  }
+
+  // --- Dock de réseaux
+  .socials:hover {
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 222, 89, 0.5);
+  }
+  .socials a:hover {
+    transform: translateY(-0.25rem) scale(1.2);
+    background: var(--chip);
+  }
+
+  // --- En-tête
+  .brand:hover img {
+    transform: rotate(-10deg) scale(1.12);
+  }
+  .chip:hover {
+    transform: scale(1.1);
+  }
+  .chip--icon:hover .ico {
+    transform: rotate(30deg);
+  }
+  .seg button:hover:not([aria-pressed='true']) {
+    background: var(--line);
+  }
+}
