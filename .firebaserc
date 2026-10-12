@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "tilportofoliov2"
+  },
+  "targets": {
+    "tilportofoliov2": {
+      "hosting": {
+        "links": ["tilstack-cont"]
+      }
+    }
+  }
+}

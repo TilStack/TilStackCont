@@ -1,0 +1,36 @@
+<header class="top">
+  <a class="brand" href="/" aria-label="TilStack">
+    <img src="favicon.svg" width="32" height="34" alt="" decoding="async" />
+    <span class="brand__name">TilStack</span>
+  </a>
+  <div class="top__tools">
+    <div class="seg" role="group" [attr.aria-label]="i18n.m().langGroup">
+      <button
+        type="button"
+        lang="fr"
+        [attr.aria-label]="i18n.m().langFr"
+        [attr.aria-pressed]="i18n.lang() === 'fr'"
+        (click)="i18n.setLang('fr')"
+      >
+        FR
+      </button>
+      <button
+        type="button"
+        lang="en"
+        [attr.aria-label]="i18n.m().langEn"
+        [attr.aria-pressed]="i18n.lang() === 'en'"
+        (click)="i18n.setLang('en')"
+      >
+        EN
+      </button>
+    </div>
+    <button
+      class="chip chip--icon"
+      type="button"
+      [attr.aria-label]="theme.theme() === 'dark' ? i18n.m().themeToLight : i18n.m().themeToDark"
+      (click)="theme.toggle()"
+    >
+      <app-icon [name]="theme.theme() === 'dark' ? 'sun' : 'moon'" />
+    </button>
+  </div>
+</header>

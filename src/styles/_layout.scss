@@ -1,0 +1,106 @@
+// Mobile : une colonne. Dès 1000 px : heure et profil à gauche, widgets à droite (page pleine largeur, pas de colonne centrée).
+// Dès 480 px, les 4 liens (Portfolio, CV, Boutique, Contact) forment une colonne verticale à droite des widgets.
+.page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 90rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 1.25rem;
+}
+
+.layout {
+  display: grid;
+  flex: 1;
+  gap: 1.5rem;
+  align-content: start;
+  // Le bloc ne colle pas à la langue et au thème.
+  padding-top: 1.75rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1.125rem;
+  align-content: center;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.widgets {
+  display: grid;
+  gap: 0.875rem;
+  align-content: start;
+  min-width: 0;
+}
+
+@media (min-width: 480px) {
+  .widgets {
+    grid-template-columns: minmax(0, 1fr) 4.75rem;
+    grid-template-areas:
+      'product tiles'
+      'whatsapp tiles'
+      'apps tiles'
+      'socials tiles';
+    column-gap: 1rem;
+  }
+  app-product-card {
+    grid-area: product;
+  }
+  app-whatsapp-cta {
+    grid-area: whatsapp;
+  }
+  app-apps-list {
+    grid-area: apps;
+  }
+  app-socials {
+    grid-area: socials;
+  }
+  app-quick-links {
+    grid-area: tiles;
+    align-self: center;
+  }
+}
+
+@media (min-width: 560px) {
+  .page {
+    padding-inline: 1.75rem;
+  }
+}
+
+// Tablette : une seule colonne, sans étirer les blocs sur toute la largeur.
+@media (min-width: 560px) and (max-width: 999px) {
+  .layout {
+    width: 100%;
+    max-width: 37.5rem;
+    margin-inline: auto;
+  }
+}
+
+// Ordinateur (≥ 1000 px) : une seule vue, sans défilement. Heure et profil à gauche ; à droite, trois colonnes :
+// produit + WhatsApp | applications + réseaux | liens (centrés en hauteur). Les tailles sont en rem, donc proportionnelles à la fenêtre.
+@media (min-width: 1000px) {
+  .page {
+    padding: 1rem 2.5rem 1.25rem;
+  }
+  .layout {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3rem;
+    align-items: center;
+    align-content: center;
+    padding-top: 1rem;
+  }
+  .hero {
+    gap: 1.75rem;
+  }
+  .widgets {
+    grid-template-columns: 26rem 20rem 4.75rem;
+    grid-template-areas:
+      'product apps tiles'
+      'whatsapp socials tiles';
+    column-gap: 1.5rem;
+    row-gap: 0.875rem;
+  }
+}

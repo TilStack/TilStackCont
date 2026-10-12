@@ -1,0 +1,7 @@
+<ul class="socials" [attr.aria-label]="i18n.m().socialsAria">
+  @for (s of socials; track s.id) {
+    <li>
+      <a [href]="s.url" [attr.aria-label]="s.label" rel="noopener"><app-icon [name]="s.id" /></a>
+    </li>
+  }
+</ul>

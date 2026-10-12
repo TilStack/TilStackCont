@@ -1,0 +1,32 @@
+<section class="product" aria-labelledby="p-title">
+  <div class="product__head">
+    <p class="product__kicker">{{ i18n.m().productKicker }}</p>
+    <h2 id="p-title" class="product__title">{{ product.shortName }}</h2>
+    <p class="product__sub">{{ i18n.m().productSub }}</p>
+  </div>
+  <!-- Mascotte 3D : décorative, chargée seulement quand elle est affichée. -->
+  <img
+    class="product__mascot"
+    src="assets/img/avatar-3d.webp"
+    width="157"
+    height="420"
+    [alt]="i18n.m().mascotAlt"
+    loading="lazy"
+    decoding="async"
+  />
+  <p class="product__desc">{{ i18n.m().productDesc }}</p>
+  <div class="product__buy">
+    <div class="price" role="group" [attr.aria-label]="i18n.m().priceLabel">
+      <p class="price__eur">{{ eur() }}</p>
+      <p class="price__xaf">
+        <span class="price__now">{{ xaf() }}</span>
+        <s class="price__old" [attr.aria-label]="i18n.m().oldPriceAria + ' ' + oldXaf()">{{ oldXaf() }}</s>
+      </p>
+    </div>
+    <a class="btn btn--primary" [href]="buyUrl" rel="noopener">
+      <app-icon name="bag" />
+      <span>{{ i18n.m().buy }}</span>
+    </a>
+  </div>
+  <p class="price__note">{{ i18n.m().priceNote }}</p>
+</section>

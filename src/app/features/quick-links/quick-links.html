@@ -1,0 +1,14 @@
+<nav class="tiles" [attr.aria-label]="i18n.m().linksAria">
+  @for (t of tiles; track t.id) {
+    <a
+      class="tile"
+      [href]="t.url"
+      [attr.download]="t.download ?? null"
+      [attr.rel]="t.download ? null : 'noopener'"
+      [attr.aria-label]="i18n.m()[t.ariaKey]"
+    >
+      <span class="tile__icon tile__icon--{{ t.variant }}"><app-icon [name]="t.icon" /></span>
+      <span class="tile__label">{{ i18n.m()[t.labelKey] }}</span>
+    </a>
+  }
+</nav>

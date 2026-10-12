@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:TIENTCHEU;Israel;;;
+FN:Israel TIENTCHEU
+NICKNAME:TilStack
+ORG:TilStack
+TITLE:Ingénieur logiciel & formateur en informatique
+TEL;TYPE=CELL,VOICE:+237678548542
+EMAIL;TYPE=INTERNET:israel01tientcheu@gmail.com
+URL:https://tilstack.me
+ADR;TYPE=WORK:;;;Douala;;;Cameroun
+END:VCARD

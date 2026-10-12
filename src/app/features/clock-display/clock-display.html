@@ -1,0 +1,13 @@
+<div class="clock">
+  <p class="clock__date">
+    @if (clock.date()) {
+      {{ clock.date() }},
+    }
+    {{ i18n.m().clockPlace }}
+  </p>
+  <p class="clock__time">
+    <time [attr.datetime]="clock.iso() || null">
+      <span class="clock__hm">{{ clock.hm() }}</span><span class="clock__ss">:{{ clock.ss() }}</span>
+    </time>
+  </p>
+</div>

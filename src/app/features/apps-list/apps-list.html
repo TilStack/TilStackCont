@@ -1,0 +1,39 @@
+<section class="apps" aria-labelledby="apps-title">
+  <h2 id="apps-title" class="section-title">{{ i18n.m().appsTitle }}</h2>
+  <ul class="apps__list">
+    @for (app of apps; track app.id) {
+      <li>
+        <ng-template #body>
+          @if (app.logo && app.altKey) {
+            <img [src]="app.logo" width="48" height="48" [alt]="i18n.m()[app.altKey]" loading="lazy" decoding="async" />
+          } @else {
+            <span class="app__ph" aria-hidden="true"><app-icon name="play" /></span>
+          }
+          <span class="app__body">
+            <span class="app__name">{{ app.name }}</span>
+            @if (app.descKey) {
+              <span class="app__desc">{{ i18n.m()[app.descKey] }}</span>
+            }
+          </span>
+          <span class="badge">{{ i18n.m()[app.badgeKey] }}</span>
+        </ng-template>
+
+        @if (app.url) {
+          <a class="app" [href]="app.url" rel="noopener">
+            <ng-container *ngTemplateOutlet="body" />
+          </a>
+        } @else {
+          <div class="app" [class.app--next]="app.soft" [class.app--support]="app.supportUrl">
+            <ng-container *ngTemplateOutlet="body" />
+            @if (app.supportUrl) {
+              <a class="support" [href]="withUtm(app.supportUrl)" [attr.aria-label]="i18n.m().supportAria" rel="noopener">
+                <app-icon name="heart" />
+                <span>{{ i18n.m().support }}</span>
+              </a>
+            }
+          </div>
+        }
+      </li>
+    }
+  </ul>
+</section>

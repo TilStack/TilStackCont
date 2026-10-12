@@ -1,0 +1,16 @@
+{
+  "name": "TilStack — liens et contact",
+  "short_name": "TilStack",
+  "description": "Remotion Video Studio, applications et contact d'Israel Tientcheu (TilStack).",
+  "lang": "fr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#14213D",
+  "background_color": "#14213D",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

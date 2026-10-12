@@ -1,0 +1,16 @@
+<div class="profile">
+  <img
+    class="avatar"
+    src="assets/img/avatar-dessin.webp"
+    width="96"
+    height="96"
+    [alt]="i18n.m().avatarAlt"
+    decoding="async"
+    fetchpriority="high"
+  />
+  <div class="profile__text">
+    <h1 id="name">{{ person.name }} <span class="dot">·</span> {{ person.alias }}</h1>
+    <p class="tagline">{{ i18n.m().tagline }}</p>
+    <p class="motto">{{ i18n.m().motto }}</p>
+  </div>
+</div>

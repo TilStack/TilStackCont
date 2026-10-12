@@ -1,0 +1,75 @@
+// Jetons de couleur. Clair par défaut ; sombre = ciel nocturne (même identité : marine #14213D et jaune #FFDE59).
+:root {
+  --navy: #14213d;
+  --yellow: #ffde59;
+  --lilac: #cfcdf8;
+
+  --text: #14213d;
+  --muted: #475069;
+  --card: rgba(255, 255, 255, 0.82);
+  --line: rgba(20, 33, 61, 0.12);
+  --chip: rgba(255, 255, 255, 0.9);
+  --seg-on: #14213d;
+  --seg-on-text: #ffffff;
+  --wa: #075e54;
+  --prod-from: #14213d;
+  --prod-to: #243a73;
+  --shadow: 0 10px 30px rgba(20, 33, 61, 0.12);
+  --radius: 18px;
+
+  --sky-top: #f6f7fb;
+  --sky-bottom: #dfe6f6;
+  --bg-a: url(/assets/img/echecs-light-a.svg);
+  --bg-b: url(/assets/img/echecs-light-b.svg);
+  --bg-a-size: 640px 560px;
+  --bg-b-size: 523px 487px;
+  --damier: rgba(20, 33, 61, 0.055);
+  --ok: #0a7a3b;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --text: #f3f4f8;
+  --muted: #bcc4d6;
+  --card: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.14);
+  --chip: rgba(255, 255, 255, 0.08);
+  --seg-on: #ffde59;
+  --seg-on-text: #14213d;
+  --wa: #0b7a6b;
+  --prod-from: #1d2f63;
+  --prod-to: #3a3d9c;
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+
+  --sky-top: #0a1124;
+  --sky-bottom: #20235a;
+  --bg-a: url(/assets/img/echecs-dark-a.svg);
+  --bg-b: url(/assets/img/echecs-dark-b.svg);
+  --damier: rgba(255, 255, 255, 0.05);
+  --ok: #5fe39b;
+  color-scheme: dark;
+}
+
+// Fond tournant (toutes les 5 h, attribut data-bg posé par theme.js puis par BackgroundService) :
+// échecs (par défaut, ci-dessus) → damiers → pions → Bible.
+:root[data-bg='damiers'] {
+  --bg-a: conic-gradient(var(--damier) 25%, transparent 0 50%, var(--damier) 0 75%, transparent 0);
+  --bg-b: none;
+  --bg-a-size: 72px 72px;
+}
+:root[data-bg='pions'] {
+  --bg-a: url(/assets/img/pions-light-a.svg);
+  --bg-b: url(/assets/img/pions-light-b.svg);
+}
+:root[data-bg='pions'][data-theme='dark'] {
+  --bg-a: url(/assets/img/pions-dark-a.svg);
+  --bg-b: url(/assets/img/pions-dark-b.svg);
+}
+:root[data-bg='bible'] {
+  --bg-a: url(/assets/img/bible-light-a.svg);
+  --bg-b: url(/assets/img/bible-light-b.svg);
+}
+:root[data-bg='bible'][data-theme='dark'] {
+  --bg-a: url(/assets/img/bible-dark-a.svg);
+  --bg-b: url(/assets/img/bible-dark-b.svg);
+}
