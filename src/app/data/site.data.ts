@@ -1,4 +1,4 @@
-import type { MessageKey } from '../core/messages';
+import appsJson from '../../content/apps.json';
 
 /** Liens et constantes du site — source unique (page, données structurées, tests). */
 export const SITE_URL = 'https://cont.tilstack.me';
@@ -48,41 +48,29 @@ export const SOCIALS: readonly SocialLink[] = [
   { id: 'mail', label: 'E-mail', url: `mailto:${PERSON.email}` },
 ];
 
+/** Texte dans les deux langues. */
+export interface Localized {
+  fr: string;
+  en: string;
+}
+
 export interface AppItem {
   id: string;
   /** Nom propre (non traduit). */
   name: string;
   logo?: string;
   url?: string;
-  altKey?: MessageKey;
-  descKey?: MessageKey;
-  badgeKey: MessageKey;
+  alt?: Localized;
+  desc?: Localized;
+  badge: Localized;
   /** Badge discret (projet sans date). */
   soft?: boolean;
   /** Si renseigné, la carte affiche un bouton « Me soutenir » vers ce lien. */
   supportUrl?: string;
 }
 
-export const APPS: readonly AppItem[] = [
-  {
-    id: 'otadex',
-    name: 'Otadex',
-    logo: 'assets/img/otadex-logo.webp',
-    url: 'https://otadex.tilstack.me',
-    altKey: 'otadexAlt',
-    descKey: 'otadexDesc',
-    badgeKey: 'otadexBadge',
-  },
-  {
-    id: 'nuvel',
-    name: 'Nuvel',
-    logo: 'assets/img/nuvel-logo.webp',
-    altKey: 'nuvelAlt',
-    descKey: 'nuvelDesc',
-    badgeKey: 'nuvelBadge',
-  },
-  { id: 'next', name: 'Séla Cantiques', descKey: 'nextDesc', badgeKey: 'nextBadge', soft: true, supportUrl: DONATION_URL },
-];
+/** Applications : à modifier dans src/content/apps.json (voir src/content/README.md). */
+export const APPS: readonly AppItem[] = appsJson;
 
 export const withUtm = (url: string): string => `${url}${url.includes('?') ? '&' : '?'}${UTM}`;
 

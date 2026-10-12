@@ -4,18 +4,18 @@
     @for (app of apps; track app.id) {
       <li>
         <ng-template #body>
-          @if (app.logo && app.altKey) {
-            <img [src]="app.logo" width="48" height="48" [alt]="i18n.m()[app.altKey]" loading="lazy" decoding="async" />
+          @if (app.logo && app.alt) {
+            <img [src]="app.logo" width="48" height="48" [alt]="app.alt[i18n.lang()]" loading="lazy" decoding="async" />
           } @else {
             <span class="app__ph" aria-hidden="true"><app-icon name="play" /></span>
           }
           <span class="app__body">
             <span class="app__name">{{ app.name }}</span>
-            @if (app.descKey) {
-              <span class="app__desc">{{ i18n.m()[app.descKey] }}</span>
+            @if (app.desc) {
+              <span class="app__desc">{{ app.desc[i18n.lang()] }}</span>
             }
           </span>
-          <span class="badge">{{ i18n.m()[app.badgeKey] }}</span>
+          <span class="badge">{{ app.badge[i18n.lang()] }}</span>
         </ng-template>
 
         @if (app.url) {

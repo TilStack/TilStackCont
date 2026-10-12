@@ -1,0 +1,27 @@
+[
+  {
+    "id": "otadex",
+    "name": "Otadex",
+    "logo": "assets/img/otadex-logo.webp",
+    "url": "https://otadex.tilstack.me",
+    "alt": { "fr": "Logo Otadex", "en": "Otadex logo" },
+    "desc": { "fr": "Encyclopédie anime & manga", "en": "Anime & manga encyclopedia" },
+    "badge": { "fr": "Bientôt sur Play Store", "en": "Coming soon on Play Store" }
+  },
+  {
+    "id": "nuvel",
+    "name": "Nuvel",
+    "logo": "assets/img/nuvel-logo.webp",
+    "alt": { "fr": "Logo Nuvel", "en": "Nuvel logo" },
+    "desc": { "fr": "Réseau social chrétien conçu par Daniel", "en": "Christian social network designed by Daniel" },
+    "badge": { "fr": "En développement", "en": "In development" }
+  },
+  {
+    "id": "next",
+    "name": "Séla Cantiques",
+    "soft": true,
+    "supportUrl": "https://store.tilstack.me/prd_qpqx6nho",
+    "desc": { "fr": "Prochaine application mobile", "en": "Next mobile app" },
+    "badge": { "fr": "Bientôt", "en": "Soon" }
+  }
+]
