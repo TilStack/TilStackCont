@@ -21,7 +21,7 @@ Projet **Angular 20** (composants autonomes, signaux, sans zone.js) **pré-rendu
 | Données structurées (prix = celui affiché, même constante) | `src/app/core/structured-data.ts` |
 | Couleurs, tailles | `src/styles/` |
 | Fiche contact téléchargeable, icônes, polices, images | `public/` |
-| Fond tournant (échecs → damiers → pions → Bible, 5 h chacun) | règle dans `src/app/core/background.service.ts` et `public/assets/js/theme.js` ; motifs SVG régénérés par `node scripts/generate-backgrounds.mjs` ; damiers dans `src/styles/_theme.scss` |
+| Fond tournant (échecs → damiers → pions → Bible, 2 h 30 chacun) | règle dans `src/app/core/background.service.ts` et `public/assets/js/theme.js` ; motifs SVG régénérés par `node scripts/generate-backgrounds.mjs` ; damiers dans `src/styles/_theme.scss` |
 | Titre/aperçu de partage (version française, fixe) | `src/index.html` |
 
 Prix : 7 500 XAF (ancien prix 12 000 XAF), relevé le 2026-10-11 sur la page de vente ; équivalent 7 500 / 655,957 = 11,43 €. Si le prix change : `PRODUCT` dans `site.data.ts`, plus le « 7 500 XAF » des textes `description` (`messages.ts` et `src/index.html`).

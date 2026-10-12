@@ -64,24 +64,29 @@ describe('I18nService', () => {
   });
 });
 
-describe('fond tournant (toutes les 5 heures)', () => {
-  const H = 3600 * 1000;
+describe('fond tournant (toutes les 2 h 30)', () => {
+  const MIN = 60 * 1000;
+  const T = 150 * MIN; // 2 h 30
 
-  it("change toutes les 5 heures, dans l'ordre : échecs, damiers, pions, Bible", () => {
-    expect(ROTATION_MS).toBe(5 * H);
+  it("change toutes les 2 h 30, dans l'ordre : échecs, damiers, pions, Bible", () => {
+    expect(ROTATION_MS).toBe(2.5 * 3600 * 1000);
     expect(BACKGROUNDS).toEqual(['echecs', 'damiers', 'pions', 'bible']);
     expect(backgroundAt(0)).toBe('echecs');
-    expect(backgroundAt(5 * H)).toBe('damiers');
-    expect(backgroundAt(10 * H)).toBe('pions');
-    expect(backgroundAt(15 * H)).toBe('bible');
-    expect(backgroundAt(20 * H)).toBe('echecs');
+    expect(backgroundAt(T)).toBe('damiers');
+    expect(backgroundAt(2 * T)).toBe('pions');
+    expect(backgroundAt(3 * T)).toBe('bible');
+    expect(backgroundAt(4 * T)).toBe('echecs');
   });
 
-  it("reste identique pendant les 5 heures, puis annonce le prochain changement à l'heure pile", () => {
-    expect(backgroundAt(5 * H - 1)).toBe('echecs');
-    expect(backgroundAt(5 * H)).toBe('damiers');
-    expect(nextChangeAt(7 * H)).toBe(10 * H);
-    expect(nextChangeAt(10 * H)).toBe(15 * H);
+  it("reste identique pendant 2 h 30, puis annonce le prochain changement à l'heure pile", () => {
+    expect(backgroundAt(T - 1)).toBe('echecs');
+    expect(backgroundAt(T)).toBe('damiers');
+    expect(nextChangeAt(T + 40 * MIN)).toBe(2 * T);
+    expect(nextChangeAt(2 * T)).toBe(3 * T);
+  });
+
+  it('un tour complet des quatre fonds dure 10 heures', () => {
+    expect(BACKGROUNDS.length * ROTATION_MS).toBe(10 * 3600 * 1000);
   });
 });
 

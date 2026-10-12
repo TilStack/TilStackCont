@@ -50,7 +50,7 @@
   color-scheme: dark;
 }
 
-// Fond tournant (toutes les 5 h, attribut data-bg posé par theme.js puis par BackgroundService) :
+// Fond tournant (toutes les 2 h 30, attribut data-bg posé par theme.js puis par BackgroundService) :
 // échecs (par défaut, ci-dessus) → damiers → pions → Bible.
 :root[data-bg='damiers'] {
   --bg-a: conic-gradient(var(--damier) 25%, transparent 0 50%, var(--damier) 0 75%, transparent 0);

@@ -5,8 +5,8 @@ import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 export const BACKGROUNDS = ['echecs', 'damiers', 'pions', 'bible'] as const;
 export type Background = (typeof BACKGROUNDS)[number];
 
-/** Un fond dure 5 heures. */
-export const ROTATION_MS = 5 * 60 * 60 * 1000;
+/** Un fond dure 2 h 30. */
+export const ROTATION_MS = 150 * 60 * 1000;
 
 /** Fond à afficher à un instant donné (millisecondes depuis 1970) : le même pour tous les visiteurs. */
 export const backgroundAt = (time: number): Background =>
