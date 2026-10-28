@@ -17,11 +17,11 @@
   <p class="product__desc">{{ i18n.m().productDesc }}</p>
   <div class="product__buy">
     <div class="price" role="group" [attr.aria-label]="i18n.m().priceLabel">
-      <p class="price__eur">{{ eur() }}</p>
       <p class="price__xaf">
         <span class="price__now">{{ xaf() }}</span>
         <s class="price__old" [attr.aria-label]="i18n.m().oldPriceAria + ' ' + oldXaf()">{{ oldXaf() }}</s>
       </p>
+      <p class="price__eur">{{ eur() }}</p>
     </div>
     <a class="btn btn--primary" [href]="buyUrl" rel="noopener">
       <app-icon name="bag" />

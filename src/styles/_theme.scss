@@ -6,7 +6,10 @@
 
   --text: #14213d;
   --muted: #475069;
-  --card: rgba(255, 255, 255, 0.82);
+  --card: rgba(255, 255, 255, 0.96);
+  --veil: rgba(238, 242, 251, 0.94);
+  --tile: #ffffff;
+  --tile-ink: #14213d;
   --line: rgba(20, 33, 61, 0.12);
   --chip: rgba(255, 255, 255, 0.9);
   --seg-on: #14213d;
@@ -31,7 +34,10 @@
 :root[data-theme='dark'] {
   --text: #f3f4f8;
   --muted: #bcc4d6;
-  --card: rgba(255, 255, 255, 0.07);
+  --card: rgba(26, 34, 72, 0.96);
+  --veil: rgba(13, 20, 48, 0.94);
+  --tile: rgba(255, 255, 255, 0.1);
+  --tile-ink: #ffde59;
   --line: rgba(255, 255, 255, 0.14);
   --chip: rgba(255, 255, 255, 0.08);
   --seg-on: #ffde59;

@@ -197,30 +197,38 @@ h1 {
   }
 }
 .price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   min-width: 0;
+  column-gap: 0.5rem;
   p {
     margin: 0;
   }
 }
-.price__eur {
+.price__xaf {
+  display: contents;
+  font-size: max(0.875rem, 12px);
+  color: #d5dbea;
+}
+.price__now {
+  flex: 1 0 100%;
   font-family: Poppins, sans-serif;
   font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.2;
   color: var(--yellow);
-}
-.price__xaf {
-  font-size: max(0.875rem, 12px);
-  color: #d5dbea;
-}
-.price__now {
-  font-weight: 600;
-  color: #fff;
   white-space: nowrap;
 }
 .price__old {
-  margin-left: 0.375rem;
+  font-size: max(0.875rem, 12px);
+  color: #d5dbea;
   white-space: nowrap;
+}
+.price__eur {
+  font-size: max(0.875rem, 12px);
+  font-weight: 600;
+  color: #fff;
 }
 .price__note {
   grid-column: 1 / -1;
@@ -406,22 +414,16 @@ h1 {
     height: 1.875rem;
   }
 }
-.tile__icon--navy {
-  color: var(--yellow);
-  background: var(--navy);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.tile__icon--white {
-  color: var(--navy);
-  background: #fff;
+.tile__icon--navy,
+.tile__icon--white,
+.tile__icon--lilac {
+  color: var(--tile-ink);
+  background: var(--tile);
+  border: 1px solid var(--line);
 }
 .tile__icon--yellow {
   color: var(--navy);
   background: var(--yellow);
-}
-.tile__icon--lilac {
-  color: var(--navy);
-  background: var(--lilac);
 }
 .tile__label {
   font-size: max(0.8125rem, 11.5px);
@@ -517,4 +519,23 @@ h1 {
   .foot {
     text-align: left;
   }
+}
+
+/* Voile doux derrière les textes posés directement sur le décor (heure, profil, pied de page) */
+.clock,
+.profile,
+.foot {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1.25rem -1.5rem;
+    z-index: -1;
+    background: radial-gradient(closest-side, var(--veil) 62%, transparent 100%);
+    pointer-events: none;
+  }
+}
+.foot::before {
+  inset: -0.25rem -1.5rem;
 }

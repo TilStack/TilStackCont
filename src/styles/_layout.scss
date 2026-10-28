@@ -3,6 +3,7 @@
 .page {
   position: relative;
   z-index: 1;
+  overflow-x: clip;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -83,7 +84,7 @@
 // produit + WhatsApp | applications + réseaux | liens (centrés en hauteur). Les tailles sont en rem, donc proportionnelles à la fenêtre.
 @media (min-width: 1000px) {
   .page {
-    padding: 1rem 2.5rem 1.25rem;
+    padding: 1rem 2.5rem 1rem;
   }
   .layout {
     grid-template-columns: minmax(0, 1fr) auto;

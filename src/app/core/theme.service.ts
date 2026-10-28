@@ -4,7 +4,7 @@ import { Injectable, inject, signal } from '@angular/core';
 export type Theme = 'light' | 'dark';
 const STORAGE_KEY = 'tl-theme';
 
-/** Clair par défaut. Le script `theme.js` pose `data-theme` avant le premier affichage ; ce service le lit. */
+/** Suit le thème du système tant que le visiteur n'a pas choisi (clair si inconnu). Le script `theme.js` pose `data-theme` avant le premier affichage ; ce service le lit. */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly doc = inject(DOCUMENT);
