@@ -312,7 +312,6 @@ h1 {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  backdrop-filter: blur(8px);
   img {
     width: 3rem;
     height: 3rem;
@@ -443,7 +442,6 @@ h1 {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 62.4375rem;
-  backdrop-filter: blur(10px);
   // 7 icônes qui se partagent la largeur du dock ; chaque zone cliquable fait au plus 3 rem de large.
   li {
     display: flex;

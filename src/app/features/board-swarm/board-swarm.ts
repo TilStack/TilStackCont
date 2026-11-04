@@ -32,6 +32,10 @@ const BATCH_COOLDOWN_MS = 380;
 /** Éléments au-dessus desquels le curseur n'est plus « dans le vide ». */
 const CONTENT = 'a, button, .product, .app, .socials, .profile, .clock, .tile, .foot, .top__tools';
 
+/** Tracés construits une seule fois (et non à chaque image). */
+const PATHS: Record<'pions' | 'bible', Path2D | undefined> = { pions: undefined, bible: undefined };
+const pathFor = (motif: 'pions' | 'bible'): Path2D => (PATHS[motif] ??= new Path2D(motif === 'pions' ? PAWN_PATH : BIBLE_PATH));
+
 const rand = (min: number, max: number): number => min + Math.random() * (max - min);
 
 /**
@@ -237,7 +241,7 @@ export class BoardSwarm {
       if (motif === 'pions' || motif === 'bible') {
         ctx.scale(p.size / 24, p.size / 24);
         ctx.globalAlpha = p.alpha * 0.85;
-        ctx.fill(new Path2D(motif === 'pions' ? PAWN_PATH : BIBLE_PATH), motif === 'bible' ? 'evenodd' : 'nonzero');
+        ctx.fill(pathFor(motif), motif === 'bible' ? 'evenodd' : 'nonzero');
       } else {
         // « echecs » : échiquier 4 × 4 ; « damiers » : petit carreau 3 × 3.
         const n = motif === 'damiers' ? 3 : 4;

@@ -26,8 +26,16 @@ body {
   line-height: 1.5;
   color: var(--text);
   background-color: var(--sky-top);
+}
+
+// Dégradé du ciel : calque fixe à part (le « background-attachment: fixed » force un redessin complet à chaque défilement).
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
-  background-attachment: fixed;
 }
 
 // Décor tournant (échecs, damiers, pions, Bible) : motifs éparpillés sur deux couches de tailles différentes, une version par thème.
