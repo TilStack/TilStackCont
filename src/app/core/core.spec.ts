@@ -118,3 +118,12 @@ describe('bouton « Me soutenir »', () => {
     expect(withUtm(DONATION_URL)).toBe(`https://store.tilstack.me/prd_qpqx6nho?${UTM}`);
   });
 });
+
+describe('application Otadex', () => {
+  it('est annoncée disponible et pointe vers sa fiche Google Play', () => {
+    const otadex = APPS.find((a) => a.id === 'otadex')!;
+    expect(otadex.url).toBe('https://play.google.com/store/apps/details?id=com.otadex.otadex');
+    expect(otadex.badge.fr).toBe('Disponible sur Play Store');
+    expect(otadex.badge.en).toBe('Available on Google Play');
+  });
+});
